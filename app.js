@@ -23,22 +23,23 @@ app.get('/', (req, res) => {
 });
 
 // API Route to handle HTML submission via GET request
-app.get('/submit-html', (req, res) => {
-  const htmlContent = req.query.htmlContent || '';
-  
+app.post('/submit-html', (req, res) => {
+  const htmlContent = req.body.htmlContent || '';
+
   if (!htmlContent) {
-    return res.status(400).send('No HTML content provided');
+    return res.status(400).json({ error: 'No HTML content provided' });
   }
 
   // Generate a unique ID for the submission
   const submissionId = generateUniqueId();
-  
+
   // Cache the HTML content using the unique ID
   submissions[submissionId] = htmlContent;
-  
-  // Redirect to the URL with the unique ID
-  res.redirect(`/view/${submissionId}`);
+
+  // Send the URL as a response instead of redirecting
+  res.json({ url: `/view/${submissionId}` });
 });
+
 
 // Route to view the cached HTML content by ID
 app.get('/view/:id', (req, res) => {
