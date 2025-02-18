@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Submission Form</title>
+</head>
+<body>
+    <h1>Submit Your HTML Code</h1>
+    
+    <!-- Form to submit HTML content using GET request -->
+    <form action="/" method="GET">
+        <textarea name="htmlContent" rows="10" cols="50" placeholder="Enter your HTML code here"></textarea>
+        <br>
+        <button type="submit">Submit</button>
+    </form>
+    
+    <h2>Rendered HTML</h2>
+    <div>
+        <p>Your HTML will be rendered below:</p>
+        <!-- Render the submitted HTML content as HTML -->
+        <div>
+            <%- htmlContent %> <!-- This will render HTML, not escape it -->
+        </div>
+    </div>
+</body>
+</html>
