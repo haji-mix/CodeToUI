@@ -1,26 +1,117 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HTML Submission Form</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome 6 CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #1b1b1b;
+            color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            background-color: #2e2e2e;
+            border-radius: 16px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .container h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #00ff99;
+        }
+
+        .container form {
+            margin-bottom: 20px;
+        }
+
+        .container textarea {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #00ff99;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            font-family: 'Poppins', sans-serif;
+            resize: none;
+            background-color: #1b1b1b;
+            color: #ffffff;
+        }
+
+        .container button {
+            padding: 12px 25px;
+            background-color: #00ff99;
+            color: #1b1b1b;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.125rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .container button:hover {
+            background-color: #00cc7a;
+        }
+
+        .container h2 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+            color: #00ff99;
+        }
+
+        .rendered-html {
+            padding: 20px;
+            background-color: #333333;
+            border-radius: 8px;
+            text-align: left;
+            word-break: break-all;
+            color: #ffffff;
+        }
+
+        .logo {
+            font-size: 4rem;
+            color: #00ff99;
+            margin-bottom: 20px;
+        }
+    </style>
 </head>
 <body>
-    <h1>Submit Your HTML Code</h1>
-    
-    <!-- Form to submit HTML content using GET request -->
-    <form action="/" method="GET">
-        <textarea name="htmlContent" rows="10" cols="50" placeholder="Enter your HTML code here"></textarea>
-        <br>
-        <button type="submit">Submit</button>
-    </form>
-    
-    <h2>Rendered HTML</h2>
-    <div>
-        <p>Your HTML will be rendered below:</p>
-        <!-- Render the submitted HTML content as HTML -->
-        <div>
-            <%- htmlContent %> <!-- This will render HTML, not escape it -->
+    <div class="container">
+        <i class="fas fa-code logo"></i>
+        <h1>Submit Your HTML Code</h1>
+        <form action="/" method="GET">
+            <textarea name="htmlContent" rows="10" placeholder="Enter your HTML code here"></textarea>
+            <br>
+            <button type="submit">Submit</button>
+        </form>
+        <h2>Rendered HTML</h2>
+        <div class="rendered-html">
+            <p>Your HTML will be rendered below:</p>
+            <div>
+                <%- htmlContent %> <!-- This will render HTML, not escape it -->
+            </div>
         </div>
     </div>
 </body>
